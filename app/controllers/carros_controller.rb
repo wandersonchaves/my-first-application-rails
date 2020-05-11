@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CarrosController < ApplicationController
-  before_action :set_carro, only: [:show, :edit, :update, :destroy]
+  before_action :set_carro, only: %i[show edit update destroy]
 
   # GET /carros
   # GET /carros.json
@@ -9,8 +11,7 @@ class CarrosController < ApplicationController
 
   # GET /carros/1
   # GET /carros/1.json
-  def show
-  end
+  def show; end
 
   # GET /carros/new
   def new
@@ -18,8 +19,7 @@ class CarrosController < ApplicationController
   end
 
   # GET /carros/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /carros
   # POST /carros.json
@@ -62,13 +62,14 @@ class CarrosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_carro
-      @carro = Carro.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def carro_params
-      params.require(:carro).permit(:modelo, :marca, :valor, :quantidade)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_carro
+    @carro = Carro.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def carro_params
+    params.require(:carro).permit(:modelo, :marca, :valor, :quantidade)
+  end
 end
