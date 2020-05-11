@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Para criar toda a configuração de (Rotas, Controllers, Models and Views) com o Scaffold:
+```sh
+rails g scaffold carro modelo:string marca:string valor:float quantidade:integer
+```
 
-Things you may want to cover:
+- Para criar as tabelas no DB
+```sh
+rake db:create
+```
 
-* Ruby version
+- Para migrar as tabelas para o DB
+```sh
+rake db:migrate
+```
 
-* System dependencies
+- Para criar um Model com o nome usuario e campos (nome, login e senha):
+```sh
+rails g model usuario nome:string login:string senha:string
+```
 
-* Configuration
+- Para criar um controller com o nome home:
+```sh
+rails g controller home
+```
 
-* Database creation
+- Tem sempre que configurar a tabela no db:
+`/db/migrate/20200511195021_create_usuarios.rb`
 
-* Database initialization
+- Vale lembrar sempre para se atentar para a configuração de rotas que deve ser feita quando utilizamos o *Generate*:
+# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+`root 'home#index'`
 
-* How to run the test suite
+- Definir a ação com o mesmo nome da rota no Controller
+`def index; end`
 
-* Services (job queues, cache servers, search engines, etc.)
+- Criar a view dentro da pasta (com o mesmo nome do Controller) e com o nome (mesmo da ação do controller) que é onde irá ficar o conteúdo da View
+`/app/views/home/index.html.erb`
 
-* Deployment instructions
-
-* ...
+- E somente se quiser, pode também adicionar uma estilização .scss extra a sua View, no arquivo:
+`/app/assets/stylesheets/home.scss`
